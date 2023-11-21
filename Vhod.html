@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Войти</title>
     <style>
         body {
-            background-color: gold;
+            background: linear-gradient(to bottom, green, yellow);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -15,10 +15,10 @@
         }
 
         .form-container {
-            background-color: yellow;
+            background-color: white;
             border-radius: 10px;
             padding: 30px;
-            box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.9);
             width: 400px;
         }
 
@@ -41,7 +41,7 @@
         }
 
         .form-container button {
-            background-color: deeppink;
+            background-color: black;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -51,23 +51,37 @@
         }
 
         .form-container button:hover {
-            background-color: black;
+            background-color: gray;
         }
     </style>
 </head>
 <body>
     <div class="form-container">
-        <h3>Войти</h3>
-        <label for="Логин">Логин</label>
-        <input type="text" id="Логин" name="Логин">
-
-        <label for="Пароль">Пароль</label>
-        <input type="password" id="Пароль" name="Пароль">
-
-
-        <a href="Index.html">
-            <button>Войти</button>
-        </a>
+        <h3>Вход</h3>
+        <form id="registrationForm">
+            <label for="login">Логин:</label>
+            <input type="text" id="login" name="login" required><br><br>
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            <button type="button" onclick="validateForm()">Войти</button>
+        </form>
     </div>
+
+    <script>
+        function validateForm() {
+            var login = document.getElementById("login").value;
+            var password = document.getElementById("password").value;
+
+            // Простая валидация для демонстрации
+            if (login === "" || password === "") {
+                alert("Все поля должны быть заполнены");
+            } else {
+                alert("Вход прошел успешно");
+                // Здесь можете добавить логику для обработки входа
+                // Например, перенаправление на другую страницу
+                window.location.href = "index.html";
+            }
+        }
+    </script>
 </body>
 </html>

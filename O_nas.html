@@ -2,18 +2,18 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Детский сад "Наша Радость"</title>
+    <title>Детский сад Золотой Дельфин</title>
     <link rel="stylesheet" href="styles.css"> <!-- Подключение стилей -->
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background: linear-gradient(to bottom, green, yellow);
         }
         header {
-            background-color: #336699;
-            color: white;
+            background-color: green;
+            color: black;
             text-align: center;
             padding: 20px 0;
         }
@@ -30,11 +30,15 @@
             margin-right: 20px;
         }
         nav ul li a {
-            color: white;
+            color: black;
             text-decoration: none;
         }
         main {
             padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
         section {
             margin-bottom: 20px;
@@ -43,12 +47,37 @@
         }
         footer {
             text-align: center;
-            background-color: #336699;
-            color: white;
+            background-color: yellow;
+            color: black;
             padding: 10px 0;
             position: absolute;
             bottom: 0;
             width: 100%;
+        }
+        .form-container {
+            background-color: white;
+       
+            padding: 360px;
+            box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.9);
+            width: 120%; /* Используйте процент ширины по вашему усмотрению */
+            max-width: 800px; /* Максимальная ширина контейнера */
+            margin-top: -210px;
+            padding-top: 10px;
+        }
+        .form-container h3 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .form-container input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px 0;
         }
     </style>
 </head>
@@ -57,17 +86,19 @@
         <h1>Детский сад "Золотой Дельфин"</h1>
         <nav>
             <ul>
-                <a href="">О нас</a>
-                <li><a href="#programs">Программы</a></li>
-                <li><a href="#schedule">Расписание и группы</a></li>
-                <li><a href="#reviews">Отзывы</a></li>
-                <li><a href="#contact">Контакты</a></li>
+                <li><a>О нас</a></li>
+                <li><a href="raspisanie.html">Расписание и группы</a></li>
+                <li><a href="otzovi.html">Отзывы</a></li>
+                <li><a href="indexcon.html">Контакты</a></li>
             </ul>
         </nav>
     </header>
     
     <main>
- <h3>мы</h3>
+        <div class="form-container">
+            <h3>Тут будет о нас</h3>
+
+        </div>
     </main>
     
     <footer>

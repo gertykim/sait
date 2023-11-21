@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Детский сад Золотой Дельфин</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключение стилей -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, green, yellow);
+        }
+        header {
+            background-color: green;
+            color: black;
+            text-align: center;
+            padding: 20px 0;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: black;
+            text-decoration: none;
+        }
+        main {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        footer {
+            text-align: center;
+            background-color: yellow;
+            color: black;
+            padding: 10px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        .form-container {
+            background-color: white;
+            text-align: left;
+            padding: 20px;
+            box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.9);
+            width: 120%;
+            max-width: 1000px;
+            margin-top: -210px;
+            padding-top: 10px;
+        }
+        .form-container h3 {
+            font-family: Palatino Linotype, serif;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        .circle-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .circle {
+            width: 150px;
+            height: 150px;
+            background-color: #ddd;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+        }
+        .circle img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 50%;
+        }
+        .circle h3 {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Детский сад "Золотой Дельфин"</h1>
+        <nav>
+            <ul>
+                <li><a href="O_nas.html">О нас</a></li>
+                <li><a href="raspisanie.html">Расписание и группы</a></li>
+                <li><a href="otzovi.html">Отзывы</a></li>
+                <li><a>Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+    <br>
+    <main>
+        <div class="form-container">
+            <div class="circle-container">
+                <div class="circle">
+                    <!-- Вставьте фото для первого круга -->
+                    <img src="kim.jpg" alt="Фото1">
+                    <br>
+                    <h3>Директор: Ким Владислав , номер:+7218429426</h3>
+                </div>
+                <div class="circle">
+                    <!-- Вставьте фото для второго круга -->
+                    <img src="srania.jpg" alt="Фото2">
+                    <br>
+
+                    <h3>Заместитель директора: Александр Бондарь  , номер:+7218429427</h3>
+                </div>
+                <div class="circle">
+                    <!-- Вставьте фото для третьего круга -->
+                    <img src="ark.jpg" alt="Фото3">
+                    <br>
+                    <h3>Директор по воспитательной работе: Аркен Амангос  , номер:+72184298755</h3>
+                </div>
+            </div>
+            <br><br><br><br><br><br><br>
+            <h3>Инстаграмм: http:/instagram.det_dom</h3>
+            <h3>Адрес:ул. Братьев Жубановых 292А</h3>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2023 Детский сад "Золотой Дельфин"</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,16 @@
+.main {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.form-container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.9);
+    width: 80%; /* Используйте процент ширины по вашему усмотрению */
+    max-width: 600px; /* Максимальная ширина контейнера */
+}

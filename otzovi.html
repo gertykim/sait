@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Детский сад Золотой Дельфин</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключение стилей -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, green, yellow);
+        }
+        header {
+            background-color: green;
+            color: black;
+            text-align: center;
+            padding: 20px 0;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: black;
+            text-decoration: none;
+        }
+        main {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column; /* Добавлено для выравнивания по центру */
+        }
+        footer {
+            text-align: center;
+            background-color: yellow;
+            color: black;
+            padding: 10px 0;
+            width: 100%;
+        }
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.9);
+            width: 80%; /* Изменено на 80% ширины */
+            max-width: 800px;
+            margin-top: 20px; /* Изменено на 20px сверху */
+            text-align: center; /* Добавлено для центрирования текста и элементов формы */
+        }
+        .form-container h3 {
+            margin-bottom: 20px;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .form-container input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        #reviews-container {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.9);
+            width: 80%; /* Изменено на 80% ширины */
+            max-width: 800px;
+            margin-top: 20px; /* Изменено на 20px сверху */
+            border-radius: 4px;
+        }
+        #delete-reviews-btn {
+            margin-top: 10px; /* Добавлено расстояние сверху */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Детский сад "Золотой Дельфин"</h1>
+        <nav>
+            <ul>
+                <li><a href="O_nas.html">О нас</a></li>
+                <li><a href="raspisanie.html">Расписание и группы</a></li>
+                <li><a id="reviews-link" href="#">Отзывы</a></li>
+                <li><a href="indexcon.html">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="form-container">
+            <h3>Напиши свой отзыв</h3>
+            <label for="Отзыв">Отзыв</label>
+            <input type="text" id="Отзыв" name="Отзыв">
+            <button onclick="addReview()">Добавить</button>       
+            <button id="delete-reviews-btn" onclick="deleteReviews()">Удалить отзывы</button>
+        </div>
+        
+        <div id="reviews-container"></div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2023 Детский сад "Золотой Дельфин"</p>
+    </footer>
+
+    <script>
+        function addReview() {
+            var reviewText = document.getElementById('Отзыв').value;
+
+            if (reviewText.trim() === "") {
+                alert("Пожалуйста, введите отзыв.");
+                return;
+            }
+
+            // Сохранение отзыва в локальное хранилище браузера
+            var reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+            reviews.push(reviewText);
+            localStorage.setItem('reviews', JSON.stringify(reviews));
+
+            // Обновление отзывов на странице
+            updateReviews();
+        }
+
+        function updateReviews() {
+            // Получение отзывов из локального хранилища и обновление контейнера
+            var reviewsContainer = document.getElementById('reviews-container');
+            var reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+
+            // Очистка контейнера перед обновлением
+            reviewsContainer.innerHTML = "";
+
+            // Вставка отзывов в контейнер
+            for (var i = 0; i < reviews.length; i++) {
+                var reviewElement = document.createElement('p');
+                reviewElement.textContent = reviews[i];
+                reviewsContainer.appendChild(reviewElement);
+            }
+        }
+
+        function deleteReviews() {
+            // Удаление отзывов в локальном хранилище и на странице
+            localStorage.clear();
+            updateReviews();
+        }
+
+        // Обновление отзывов при загрузке страницы
+        updateReviews();
+    </script>
+</body>
+</html>
