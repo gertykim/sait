@@ -63,10 +63,10 @@
             <input type="text" id="login" name="login" required><br><br>
 
             <label for="password">Пароль:</label>
-            <input type="password" id="password" name="password" required><br><br>
+            <input type="password" id="password" name="password" required maxlength="8"><br><br>
 
             <label for="povpassword">Повторите пароль:</label>
-            <input type="password" id="povpassword" name="povpassword" required><br><br>
+            <input type="password" id="povpassword" name="povpassword" required maxlength="8"><br><br>
 
             <button type="button" onclick="validateForm()">Войти</button>
         </form>
@@ -87,7 +87,7 @@
                 alert("Вход прошел успешно");
                 // Здесь можете добавить логику для обработки входа
                 // Например, перенаправление на другую страницу
-                window.location.href = "index.html";
+                window.location.href = "Index.html";
             }
         }
     </script>

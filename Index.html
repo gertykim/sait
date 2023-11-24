@@ -20,6 +20,9 @@
         header h1 {
             margin: 0;
         }
+        h4{
+            margin-left: 125px;
+        }
         nav ul {
             list-style: none;
             padding: 0;
@@ -56,29 +59,38 @@
         }
         .form-container {
             background-color: white;
-       
-            padding: 360px;
+            padding: 20px;
             box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.9);
-            width: 120%; /* Используйте процент ширины по вашему усмотрению */
-            max-width: 800px; /* Максимальная ширина контейнера */
-            margin-top: -210px;
+            width: 320%;
+            max-width: 1200px;
+            margin-top: -310px;
             padding-top: 10px;
         }
         .form-container h3 {
             text-align: center;
             margin-bottom: 20px;
         }
-        .form-container label {
-            display: block;
-            margin-bottom: 10px;
+        .album-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
         }
-        .form-container input {
+        .album-photo {
+            width: 150px;
+            height: 150px;
+            background-color: #ddd;
+            border-radius: 10px;
+            margin: 10px;
+            overflow: hidden;
+        }
+        .album-photo img {
             width: 100%;
-            padding: 5px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin: 10px 0;
+            height: 100%;
+            object-fit: cover;
         }
+        .album-photo:hover {
+            transform: scale(1.5); 
+        }        
     </style>
 </head>
 <body>
@@ -88,7 +100,7 @@
             <ul>
                 <li><a href="O_nas.html">О нас</a></li>
                 <li><a href="raspisanie.html">Расписание и группы</a></li>
-                <li><a href="otzovi">Отзывы</a></li>
+                <li><a href="otzovi.html">Отзывы</a></li>
                 <li><a href="indexcon.html">Контакты</a></li>
             </ul>
         </nav>
@@ -96,8 +108,23 @@
     
     <main>
         <div class="form-container">
-            <h3>Тут будет текст</h3>
+            <h3>Наши лучшие детки</h3>
+            <div class="album-container">
+                <!-- Вставьте фотографии для альбома -->
+                <div class="album-photo">
+                    <img src="reb1.jpg" alt="Фото 1"> 
+                 
+                </div>
+                <div class="album-photo">
+                    <img src="reb2.jpg" alt="Фото 2">
+                </div>
+                <div class="album-photo">
+                    <img src="reb3.jpg" alt="Фото 3">
+                </div>
+            </div>  
+            <br> <h4>Ваня Веникин 2014г</h4>  
         </div>
+
     </main>
     
     <footer>
