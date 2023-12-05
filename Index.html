@@ -13,7 +13,7 @@
         }
         header {
             background-color: green;
-            color: black;
+            color: white;
             text-align: center;
             padding: 20px 0;
         }
@@ -90,7 +90,104 @@
         }
         .album-photo:hover {
             transform: scale(1.5); 
-        }        
+        } 
+         .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 0px 15px 0px #000000;
+            z-index: 999;
+        }
+
+        .popup h2 {
+            margin-top: 0;
+        }
+
+        .close-btn {
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        /* Kazakh Language Styles */
+        body.kz {
+            background: linear-gradient(to bottom, #ffcc00, #ff9900);
+            color: black;
+        }
+
+        header.kz {
+            background-color: #ffcc00;
+            color: black;
+        }
+
+        nav ul li a.kz {
+            color: black;
+        }
+
+        footer.kz {
+            background-color: #ffcc00;
+            color: black;
+        }
+
+        .form-container.kz {
+            background-color: #fff;
+            color: black;
+        }
+
+        .album-photo.kz {
+            background-color: #ddd;
+        }
+ .real-time-clock {
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .clock-face {
+            width: 200px;
+            height: 200px;
+            background-color: white;
+            border-radius: 50%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .hour-hand, .minute-hand, .second-hand {
+            position: absolute;
+            background-color: black;
+            transform-origin: 50% 100%;
+            transform: rotate(90deg);
+        }
+
+        .hour-hand {
+            height: 60px;
+            width: 5px;
+            top: 50px;
+            left: 97.5px;
+        }
+
+        .minute-hand {
+            height: 90px;
+            width: 3px;
+            top: 30px;
+            left: 98.5px;
+        }
+
+        .second-hand {
+            height: 100px;
+            width: 1px;
+            top: 20px;
+            left: 99.5px;
+            background-color: red; /* Красный цвет для секундной стрелки */
+        }
+
     </style>
 </head>
 <body>
@@ -98,10 +195,12 @@
         <h1>Детский сад "Золотой Дельфин"</h1>
         <nav>
             <ul>
-                <li><a href="O_nas.html">О нас</a></li>
-                <li><a href="raspisanie.html">Расписание и группы</a></li>
-                <li><a href="otzovi.html">Отзывы</a></li>
-                <li><a href="indexcon.html">Контакты</a></li>
+                <li><a href="O_nas.html" class="kz">О нас</a></li>
+                <li><a href="raspisanie.html" class="kz">Расписание и группы</a></li>
+                <li><a href="otzovi.html" class="kz">Отзывы</a></li>
+                <li><a href="indexcon.html" class="kz">Контакты</a></li>
+                <li><a href="#" id="settingsBtn" class="kz">Настройки</a></li>
+               <h3> <time id="real-time-clock"></time></h3>
             </ul>
         </nav>
     </header>
@@ -122,11 +221,85 @@
                     <img src="reb3.jpg" alt="Фото 3">
                 </div>
             </div>  
-            <br> <h4>Ваня Веникин 2014г</h4>  
         </div>
-
+    <div id="settingsPopup" class="popup">
+            <span class="close-btn" onclick="closePopup()">×</span>
+            <h2>Настройки</h2>
+          <label for="language">Выбери язык:</label>
+        <select id="language" name="language" onchange="changeLanguage()">
+            <option value="ru">Русский</option>
+            <option value="kz">Казахский</option>
+        </div>
     </main>
-    
+
+<script>
+    function changeLanguage() {
+        var selectedLanguage = document.getElementById('language').value;
+        var body = document.body;
+        var header = document.querySelector('header');
+        var navLinks = document.querySelectorAll('nav ul li a');
+        var footer = document.querySelector('footer');
+        var formContainer = document.querySelector('.form-container');
+        var albumPhotos = document.querySelectorAll('.album-photo');
+
+        // Remove language-specific classes from all elements
+        body.classList.remove('kz');
+        header.classList.remove('kz');
+        footer.classList.remove('kz');
+        formContainer.classList.remove('kz');
+        albumPhotos.forEach(function(photo) {
+            photo.classList.remove('kz');
+        });
+        navLinks.forEach(function(link) {
+            link.classList.remove('kz');
+        });
+
+        // Apply styles for the selected language
+        if (selectedLanguage === 'kz') {
+            body.classList.add('kz');
+            header.classList.add('kz');
+            footer.classList.add('kz');
+            formContainer.classList.add('kz');
+            albumPhotos.forEach(function(photo) {
+                photo.classList.add('kz');
+            });
+            navLinks.forEach(function(link) {
+                link.classList.add('kz');
+            });
+        }
+    }
+
+    document.getElementById('settingsBtn').addEventListener('click', function() {
+        document.getElementById('settingsPopup').style.display = 'block';
+    });
+
+    function closePopup() {
+        document.getElementById('settingsPopup').style.display = 'none';
+    }
+        function updateClock() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+
+            // Дополнительные нули перед однозначными числами
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            var timeString = hours + ':' + minutes + ':' + seconds;
+
+            // Вывод времени в тег <time>
+            document.getElementById('real-time-clock').textContent = timeString;
+        }
+
+        // Обновление времени каждую секунду
+        setInterval(updateClock, 1000);
+
+        // Обновление времени при загрузке страницы
+        updateClock();
+    </script>
+</script>
     <footer>
         <p>&copy; 2023 Детский сад "Золотой Дельфин"</p>
     </footer>

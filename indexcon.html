@@ -11,16 +11,19 @@
             padding: 0;
             background: linear-gradient(to bottom, green, yellow);
         }
-        header {
+         header {
             background-color: green;
-            color: black;
+            color: white; /* Изменено на белый цвет текста */
             text-align: center;
             padding: 20px 0;
+            margin-bottom: 20px; /* Добавлено расстояние снизу */
         }
         header h1 {
             margin: 0;
+            font-size: 36px; /* Увеличен размер шрифта */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Добавлен тень текста */
         }
-        nav ul {
+           nav ul {
             list-style: none;
             padding: 0;
             margin: 0;
@@ -56,7 +59,7 @@
             box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.9);
             width: 120%;
             max-width: 1000px;
-            margin-top: -210px;
+            margin-top: -345px;
             padding-top: 10px;
         }
         .form-container h3 {
@@ -89,6 +92,49 @@
             text-align: center;
             margin-top: 10px;
         }
+        .enroll-button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .enroll-button:hover {
+            background-color: #45a049;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 0px 15px 0px #000000;
+            z-index: 999;
+            border-radius: 5px;
+        }
+
+        .popup h2 {
+            margin-top: 0;
+        }
+
+        .close-btn {
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 18px;
+            color: #333;
+        }
     </style>
 </head>
 <body>
@@ -100,6 +146,9 @@
                 <li><a href="raspisanie.html">Расписание и группы</a></li>
                 <li><a href="otzovi.html">Отзывы</a></li>
                 <li><a>Контакты</a></li>
+                <li><a href="#" id="settingsBtn" class="enroll-button">Зачислить ребенка</a></li>
+                               <h3> <time id="real-time-clock"></time></h3>
+
             </ul>
         </nav>
     </header>
@@ -131,12 +180,110 @@
             <br><br><br><br><br><br><br>
             <h3>Инстаграмм: http:/instagram.det_dom</h3>
             <h3>Адрес:ул. Братьев Жубановых 292А</h3>
+        </div>
+         <div id="settingsPopup" class="popup">
+            <span class="close-btn" onclick="closePopup()">×</span>
+            <h2>Зачислить ребенка</h2>
+            <label for="Email">Email:</label>
+            <input type="Email" id="Email" name="Email" > <br><br>  
 
+            <label for="name">Имя и Фамилия:</label>
+            <input type="name" id="name" name="name" required><br><br> 
+
+            <label for="name_reb">Имя и Фамилия ребенка:</label>
+            <input type="name_reb" id="name_reb" name="name_reb" required><br><br>
+
+            <label for="birthdate">Дата рождения ребенка:</label>
+            <input type="date" id="birthdate" name="birthdate" required><br><br>
+            
+            <button type="button" class="submit-button" onclick="submitApplication()">Отправить заявку</button>
+
+        </div>
+    <div id="confirmationPopup" class="popup">
+            <span class="close-btn" onclick="closePopup()">×</span>
+            <h2>Заявка отправлена</h2>
+            <p>Ваша заявка успешно отправлена. Мы свяжемся с вами в ближайшее время.</p>
         </div>
     </main>
     
     <footer>
         <p>&copy; 2023 Детский сад "Золотой Дельфин"</p>
     </footer>
+     <script>
+       function changeLanguage() {
+        var selectedLanguage = document.getElementById('language').value;
+        var body = document.body;
+        var header = document.querySelector('header');
+        var navLinks = document.querySelectorAll('nav ul li a');
+        var footer = document.querySelector('footer');
+        var formContainer = document.querySelector('.form-container');
+        var albumPhotos = document.querySelectorAll('.album-photo');
+
+        // Remove language-specific classes from all elements
+        body.classList.remove('kz');
+        header.classList.remove('kz');
+        footer.classList.remove('kz');
+        formContainer.classList.remove('kz');
+        albumPhotos.forEach(function(photo) {
+            photo.classList.remove('kz');
+        });
+        navLinks.forEach(function(link) {
+            link.classList.remove('kz');
+        });
+
+        // Apply styles for the selected language
+        if (selectedLanguage === 'kz') {
+            body.classList.add('kz');
+            header.classList.add('kz');
+            footer.classList.add('kz');
+            formContainer.classList.add('kz');
+            albumPhotos.forEach(function(photo) {
+                photo.classList.add('kz');
+            });
+            navLinks.forEach(function(link) {
+                link.classList.add('kz');
+            });
+        }
+    }
+   function submitApplication() {
+            // Здесь можете добавить логику для отправки заявки на сервер,
+            // например, с использованием Ajax.
+
+            // После успешной отправки, показываем всплывающее окно.
+            document.getElementById('confirmationPopup').style.display = 'block';
+        }
+
+        function closePopup() {
+    document.getElementById('confirmationPopup').style.display = 'none';
+    document.getElementById('enrollPopup').style.display = 'none';
+}
+    document.getElementById('settingsBtn').addEventListener('click', function() {
+        document.getElementById('settingsPopup').style.display = 'block';
+    });
+
+ 
+        function updateClock() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+
+            // Дополнительные нули перед однозначными числами
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            var timeString = hours + ':' + minutes + ':' + seconds;
+
+            // Вывод времени в тег <time>
+            document.getElementById('real-time-clock').textContent = timeString;
+        }
+
+        // Обновление времени каждую секунду
+        setInterval(updateClock, 1000);
+
+        // Обновление времени при загрузке страницы
+        updateClock();
+        </script>
 </body>
 </html>
